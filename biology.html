@@ -1,0 +1,2757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive PYQ Compilation (2017–2025)</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --info-color: #2980b9;
+            --table-header: #34495e;
+            --table-row-even: #f8f9fa;
+            --table-row-hover: #e8f4f8;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .compiler-info {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            background: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .year-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .year-btn {
+            padding: 10px 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .year-btn.active {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .year-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .note {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            background: linear-gradient(to right, #fff9e6, #fff);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .note p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .chapter-nav {
+            position: sticky;
+            top: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            z-index: 100;
+        }
+        
+        .chapter-nav h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .chapter-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .chapter-link {
+            padding: 8px 15px;
+            background: var(--light-color);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .chapter-link:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        h3 {
+            background: linear-gradient(135deg, var(--secondary-color), var(--info-color));
+            color: white;
+            padding: 15px 20px;
+            margin: 40px 0 15px 0;
+            border-radius: var(--border-radius);
+            font-size: 1.4rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+        }
+        
+        h4 {
+            color: var(--primary-color);
+            margin: 30px 0 15px 0;
+            padding: 10px 15px;
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            border-left: 4px solid var(--success-color);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 40px 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: linear-gradient(to right, var(--table-header), #3a5169);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--table-row-even);
+        }
+        
+        tr:hover {
+            background-color: var(--table-row-hover);
+            transition: background-color 0.2s ease;
+        }
+        
+        td:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 80px;
+        }
+        
+        td:nth-child(2) {
+            width: 100px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        td[data-year="2017"]:first-child {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        td[data-year="2018"]:first-child {
+            border-left: 4px solid #3498db;
+        }
+        
+        td[data-year="2019"]:first-child {
+            border-left: 4px solid #2ecc71;
+        }
+        
+        td[data-year="2020"]:first-child {
+            border-left: 4px solid #f39c12;
+        }
+        
+        td[data-year="2023"]:first-child {
+            border-left: 4px solid #9b59b6;
+        }
+        
+        td[data-year="2024"]:first-child {
+            border-left: 4px solid #1abc9c;
+        }
+        
+        td[data-year="2025"]:first-child {
+            border-left: 4px solid #e67e22;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .year-filter {
+                justify-content: center;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 10px 12px;
+            }
+            
+            td:first-child, td:nth-child(2) {
+                width: auto;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .header-container, .note, h3, h4 {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .controls, .chapter-nav {
+                display: none;
+            }
+            
+            tr {
+                break-inside: avoid;
+            }
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 20px;
+            color: var(--accent-color);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>Comprehensive Previous Year Questions (PYQ) List (2017–2025)</h1>
+        <div class="compiler-info">Compiled by Sriyans Raj</div>
+    </div>
+    
+    <div class="controls">
+        <input type="text" class="search-box" placeholder="Search questions...">
+        <div class="year-filter">
+            <button class="year-btn active" data-year="all">All Years</button>
+            <button class="year-btn" data-year="2017">2017</button>
+            <button class="year-btn" data-year="2018">2018</button>
+            <button class="year-btn" data-year="2019">2019</button>
+            <button class="year-btn" data-year="2020">2020</button>
+            <button class="year-btn" data-year="2023">2023</button>
+            <button class="year-btn" data-year="2024">2024</button>
+            <button class="year-btn" data-year="2025">2025</button>
+        </div>
+    </div>
+    
+    <div class="note">
+        <p>This compilation includes <strong>each and every question</strong> extracted from the provided sources for the years 2017, 2018, 2019, 2020, 2023, 2024, and 2025, organized chapter-wise.</p>
+    </div>
+    
+    <div class="chapter-nav">
+        <h3>Quick Navigation</h3>
+        <div class="chapter-links">
+            <a href="#chapter1" class="chapter-link">Cell Structure</a>
+            <a href="#chapter2" class="chapter-link">Genetics</a>
+            <a href="#chapter3" class="chapter-link">Plant Physiology</a>
+            <a href="#chapter4" class="chapter-link">Human Anatomy</a>
+            <a href="#chapter5" class="chapter-link">Reproductive System</a>
+            <a href="#chapter6" class="chapter-link">Ecology</a>
+        </div>
+    </div>
+
+    <!-- Chapter 1: Cell Structure and Division -->
+    <h3 id="chapter1">Chapter 1: Cell Structure and Division (Mitosis, Meiosis, Cell Cycle)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(d)(iv)</td>
+                <td>Rewrite the terms in correct order in a logical sequence: <strong>Uterus, Parturition, Fertilisation, Gestation, Implantation</strong>. (Note: This question contains reproduction terms but includes Gestation/Parturition sequence, often taught alongside cell cycle timing basics).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(f)(ii)</td>
+                <td>Complete the second pair on a similar basis: Cytoplasm : Cytokinesis : : Nucleus : ____________</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(f)(iii)</td>
+                <td>Complete the second pair on a similar basis: TT : Homozygous : : Tt : ____________</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(b)(v)</td>
+                <td>Synthesis phase in the cell cycle is called so, because of the synthesis of more: A. RNA, B. RNA and proteins, C. DNA, D. Glucose.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(a)(i)</td>
+                <td>Study the diagram given below which represents a stage during the mitotic cell division and <strong>Identify the stage giving suitable reasons</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(a)(ii)</td>
+                <td>Name the parts numbered 1 and 2 (in the mitotic division diagram).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(a)(iii)</td>
+                <td>What is the <strong>technical term for the division of nucleus</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(a)(iv)</td>
+                <td>Mention the stage that comes before the stage shown in the diagram. <strong>Draw a neat labelled diagram of the stage mentioned</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(a)(v)</td>
+                <td>Which is the cell division that results in <strong>half the number of chromosomes</strong> in daughter cells?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(b)(i)</td>
+                <td>Study the diagram representing a stage during mitotic cell division. <strong>Identify the stage by giving a suitable reason</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(b)(ii)</td>
+                <td>Is it a plant or an animal cell? <strong>Give a reason to support your answer</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(b)(iii)</td>
+                <td><strong>Draw a neat, labelled diagram of the stage which follows</strong> the one shown in the diagram.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(b)(iv)</td>
+                <td>How many chromosomes will <strong>each daughter cell have</strong> after the completion of the above division?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(b)(v)</td>
+                <td>Differentiate between Metaphase and Anaphase on the basis of <strong>Position of chromosomes</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(b)(x)</td>
+                <td>Give the biological/technical term for a <strong>non-dividing phase of the cell cycle where more DNA is synthesised</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(xv)</td>
+                <td>During the synthesis phase of the cell cycle, more of: (c) <strong>DNA is synthesised</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(vi)</td>
+                <td><strong>Haploid number of chromosomes are found in</strong>: (d) Sperms.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(i)(a)</td>
+                <td>Name the organelle that <strong>forms the aster during cell division</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(iii)</td>
+                <td>Differentiate between <strong>Karyokinesis and Cytokinesis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(i)</td>
+                <td>Duplicated chromosomes are <strong>joined at a point termed</strong>: (b) <strong>Centromere</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(xii)</td>
+                <td>A male gorilla has 48 chromosomes... How many chromosomes will <strong>each of the sperms have</strong>? (a) 24.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q8(v)(a)</td>
+                <td>The diagram given below represents a stage in mitosis. <strong>Identify the stage given above</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q8(v)(c)</td>
+                <td>Mention the <strong>number of chromosomes</strong> given in the diagram.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(x)</td>
+                <td>A phase of cell division where the <strong>spindle fibres disappear</strong> is: (a) <strong>Telophase</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q3(v)</td>
+                <td><strong>Draw a neat, labelled diagram of an animal cell showing Metaphase with four chromosomes</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Chapter 2: Genetics and Evolution -->
+    <h3 id="chapter2">Chapter 2: Genetics and Evolution</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(e)(iv)</td>
+                <td>Choose the ODD one out: Phosphate, RNA, Sugar, Nitrogenous base. Name the CATEGORY to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(f)(v)</td>
+                <td>Complete the second pair on a similar basis: Adenine : Thymine : : Cytosine : ____________.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(g)(iii)</td>
+                <td>Match <strong>DNA and histones</strong> with nucleosome.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(ii)</td>
+                <td>Give appropriate biological / technical terms for <strong>The suppressed allele of a gene</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(vi)</td>
+                <td>Give appropriate biological / technical terms for <strong>A pair of corresponding chromosomes of the same size and shape, one from each parent</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q7(a)(i)</td>
+                <td>What is the <strong>phenotype and genotype of the F1 generation</strong> if a plant bearing pure axial flowers is crossed with a plant bearing pure terminal flowers?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q7(a)(ii)</td>
+                <td><strong>Draw a Punnett square board</strong> to show the gametes and offsprings when both the parent plants are heterozygous for axial flowers.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q7(a)(iii)</td>
+                <td>What is the <strong>phenotypic ratio and genotypic ratio</strong> of the above cross shown in (ii).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q7(a)(iv)</td>
+                <td>State <strong>Mendel's Law of Dominance</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q7(a)(v)</td>
+                <td>Name <strong>two genetic disorders commonly seen in human males</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(e)(v)</td>
+                <td>Correct the following statement: <strong>Nitrogen bonds</strong> are present between the complementary nitrogenous bases of DNA.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(b)(v)</td>
+                <td>Draw a neat labelled diagram of a <strong>chloroplast</strong>. (Note: While Chloroplast structure is C3, its DNA/replication links to C2).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(b)(ii)</td>
+                <td>Represent the process of photosynthesis in the form of a balanced equation.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(iv)</td>
+                <td>The condition in which a pair of chromosomes carry similar alleles of a particular character (Technical term).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(v)</td>
+                <td>The complex consisting of a DNA strand and a core of histones (Technical term).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(b)(i)</td>
+                <td>Give the phenotype and genotype of the F1 generation (GGII x ggii). Which type of pollination has occurred to produce F1 generation?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(b)(ii)</td>
+                <td>Write the phenotypic ratio of the F2 generation.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(b)(iii)</td>
+                <td>Write the possible combinations of the gametes that can be obtained if two F1 hybrid plants are crossed.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(b)(iv)</td>
+                <td>State <strong>Mendel's law of 'Segregation of Gametes'</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(b)(v)</td>
+                <td>What is the <strong>scientific name of the plant which Mendel used</strong> for his experiments on inheritance?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(a)(iv)</td>
+                <td>Name a pair of corresponding chromosomes of the same shape and size and derived one from each parent.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(b)(i)</td>
+                <td>Correct and rewrite the statement: The theory of Inheritance of Acquired Characters was proposed by <strong>Watson and Crick</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(f)(iv)</td>
+                <td>Choose the ODD one out: Chicken pox, <strong>Colour blindness</strong>, Haemophilia, Albinism. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(g)(iv)</td>
+                <td>Expand the abbreviation <strong>DNA</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(b)(i)</td>
+                <td>Identify Australopithecus and Neanderthal man from the pictures.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(b)(iii)</td>
+                <td>Who proposed the theory of 'Natural Selection'?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(b)(iv)</td>
+                <td>Name the organism used as an example to explain 'Industrial Melanism'.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(a)(i)</td>
+                <td>What is the <strong>phenotype and genotype of the F1 generation</strong> if a homozygous tall plant is crossed with a homozygous dwarf plant?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(a)(ii)</td>
+                <td><strong>Draw a Punnett square board</strong> to show the gametes and offspring when both the parents are heterozygous for tallness.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(a)(iii)</td>
+                <td>What is the <strong>phenotypic ratio and genotypic ratio</strong> of the above cross in (ii)?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(a)(iv)</td>
+                <td>State <strong>Mendel's Law of Dominance</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(a)(v)</td>
+                <td>What is a <strong>Dihybrid Cross</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q6(b)(v)</td>
+                <td>Name the <strong>four nitrogenous bases</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(b)(i)</td>
+                <td>Explain the term <strong>Allele</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(b)(iv)</td>
+                <td>Explain the term <strong>Phenotype</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(d)(iv)</td>
+                <td>Rewrite the terms in correct order in a logical sequence: <strong>Australopithecus</strong>, Cro-Magnon Man, Homo erectus, Neanderthal Man, Homo sapiens.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q3(b)(v)</td>
+                <td>Biological reason: <strong>Homo sapiens sapiens is the most highly evolved form of man</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(b)(ix)</td>
+                <td>Give the technical term for <strong>A sudden inheritable change in one or more genes</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(a)(i)</td>
+                <td>What is the <strong>phenotype and genotype of F1 individuals</strong> (TTRR x ttrr)?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(a)(ii)</td>
+                <td>Write the possible combination of gametes that are obtained when two F1 hybrid plants are crossed.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(a)(iii)</td>
+                <td>Mention the phenotypic ratio of the F2 generation.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(a)(iv)</td>
+                <td>State <strong>Mendel's Law of Independent Assortment</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(a)(v)</td>
+                <td>Name <strong>two X-linked disorders</strong> found in humans.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q4(i)</td>
+                <td>Expand the abbreviation – <strong>DNA</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q4(iii)</td>
+                <td>Mention the <strong>two pairs of nitrogenous bases which pair with each other</strong> with hydrogen bonds.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q4(iv)</td>
+                <td>State <strong>Mendel's 'Law of Segregation'</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(i)</td>
+                <td>Define the term <strong>Mutation</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(ii)</td>
+                <td><strong>Draw a Punnett square</strong> to find out the Phenotypic and Genotypic ratios of the progeny belonging to the F2 generation (Pure breeding red (RR) x pure breeding white (rr)).</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(x)</td>
+                <td>Who gave the correct examples of <strong>genetic disorders</strong>? P, Q, R, S options. (R. Haemophilia and Colour blindness, S. Haemophilia and Albinism)</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(xv)</td>
+                <td><strong>Industrial Melanism was observed in</strong>: (b) <strong>Peppered Moth</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(ii)(a)</td>
+                <td>Arrange and rewrite the terms in each group in the correct order: <strong>Australopithecus, Cro-Magnon, Homo erectus, Neanderthal man</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(ii)</td>
+                <td>Differentiate between Australopithecus and Modern man based on <strong>body hair</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(v)(a)</td>
+                <td>Given schematic representation of inheritance of seed shape. Which is the dominant and recessive allele of the trait?</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(v)(b)</td>
+                <td>What does the ratio 3 : 1 in the F2 generation represent?</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(v)(c)</td>
+                <td>State <strong>Mendel's Law of Dominance</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(v)</td>
+                <td>A scientist wanted to conduct a genetic experiment on mice... What will be the phenotype of the offsprings?</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(viii)</td>
+                <td>Ajay and Vijay are siblings. Ajay can roll his tongue while Vijay cannot. What is the genotype of their parents?</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(i)(e)</td>
+                <td>Name an insect which is a classic example of <strong>natural selection due to industrial melanism</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q3(iii)</td>
+                <td>Mention the <strong>two pairs of nitrogenous bases that are present in a DNA strand</strong> and pair with each other by hydrogen bonds.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q4(i)</td>
+                <td>What is the structure of DNA as proposed by Watson and Crick?</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(i)</td>
+                <td>Define the term <strong>Allele</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q8(v)(a)</td>
+                <td>Explain the phenotype of the offsprings of the F1 generation obtained from the initial cross (TTRR x ttrr).</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q8(v)(b)</td>
+                <td>Mention the phenotypic ratio of the F2 generation offsprings.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q8(v)(c)</td>
+                <td>State <strong>Mendel's Law of Independent Assortment</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Chapter 3: Plant Physiology -->
+    <h3 id="chapter3">Chapter 3: Plant Physiology (Photosynthesis, Absorption, Transpiration, Tropism)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(a)(i)</td>
+                <td>The process by which <strong>root hairs absorb water from the soil</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(c)(v)</td>
+                <td>Rewrite the correct statement: The solvent used to dissolve the chlorophyll pigments while testing a leaf for starch is <strong>Soda lime</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(a)(i)</td>
+                <td>What is the <strong>state of the cell</strong> shown in the diagram (plasmolysed)?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(a)(ii)</td>
+                <td>Name the structure that acts as a selectively permeable membrane (in a plant cell).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(a)(iii)</td>
+                <td>Label the parts numbered 1 to 4 in the diagram (plasmolysed cell).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(a)(iv)</td>
+                <td>How can the above cell be brought back to its original condition? Mention the <strong>scientific term for the recovery of the cell</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(a)(v)</td>
+                <td>State any two features of the above plant cell which is not present in animal cells.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q4(a)(i)</td>
+                <td>Name the physiological process occurring in the green plant that has kept the mouse alive.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q4(a)(ii)</td>
+                <td>Explain the physiological process mentioned above.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q4(a)(iii)</td>
+                <td>Why did the mouse die in bell jar B?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q4(a)(iv)</td>
+                <td>What is the significance of the process as stated in (i) for life on earth.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q4(a)(v)</td>
+                <td>Represent the above mentioned physiological process in the form of a <strong>chemical equation</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(a)(v)</td>
+                <td>Name <strong>The wax-like layer on the epidermis of leaves which reduces transpiration</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(c)(i)-(v)</td>
+                <td>Complete the paragraph by filling in the blanks (i) to (v) for the steps to <strong>test a leaf for starch</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(e)(iii)</td>
+                <td>Correct the following statement: The cell sap of root hair is <strong>Hypotonic</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(e)(iv)</td>
+                <td>Correct the following statement: <strong>Xylem</strong> transports starch from the leaves to all parts of the plant body.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q2(b)(iv)</td>
+                <td>Mention the exact location of <strong>Hydathodes</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(b)(i)</td>
+                <td>What <strong>aspect of photosynthesis is being tested</strong> in the above diagram (variegated leaf)?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(b)(iii)</td>
+                <td>Why was the plant <strong>kept in the dark</strong> before beginning the experiment?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(b)(iv)</td>
+                <td>What will be the result of the starch test performed on leaf 'A' shown in the diagram? Give an example of a plant with variegated leaves.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(b)(v)</td>
+                <td>Differentiate between <strong>Hypotonic solution and Hypertonic solution</strong> (condition of a plant cell when placed in them).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(b)(iv)</td>
+                <td>Biological explanation: Plants growing in fertilized soil are often found to wilt if the soil is not adequately watered.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(a)(i)</td>
+                <td>Name the physiological process depicted in the diagram (Potometer). Why was <strong>oil added to the water</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(a)(ii)</td>
+                <td>When placed in bright sunlight for four hours, what do you observe with regard to the initial and final weight of the plant? Give a suitable reason for your answer.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(a)(iii)(1)</td>
+                <td>What happens to the level of water when this setup is placed in: Humid conditions?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(a)(iii)(2)</td>
+                <td>What happens to the level of water when this setup is placed in: Windy conditions?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(a)(iv)</td>
+                <td>Mention any three adaptations found in plants to overcome the process mentioned in (i).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q7(a)(v)</td>
+                <td>Explain the term <strong>'Guttation'</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(c)(iii)</td>
+                <td>Biological reason: <strong>Root hairs become flaccid and droop</strong> when excess fertilizers are added to the moist soil around them.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(e)(v)</td>
+                <td>Which one of the following does <strong>not affect the rate of transpiration</strong>? (D. Age of the plant).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(g)(i)</td>
+                <td>Expand the abbreviation – <strong>ABA</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(g)(ii)</td>
+                <td>Expand the abbreviation – <strong>IAA</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(a)(i)</td>
+                <td>Label the parts 1 and 2 (tropic movement diagram).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(a)(ii)</td>
+                <td>Name the tropic movement shown by part 1.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(a)(iii)</td>
+                <td>Part 1 is affected by two stimuli. Name them. Which one of the two is stronger?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(a)(iv)</td>
+                <td>What is <strong>Thigmotropism</strong>? Give one example.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(a)(v)</td>
+                <td>What is meant by 'Positive' and 'Negative' tropic movements in plants?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(b)(iii)</td>
+                <td>Mention the exact location of <strong>Thylakoids</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(a)(i)</td>
+                <td>Name the factor studied in this experiment (Black paper clip).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(a)(ii)</td>
+                <td>What will you observe in the experimental leaf after the starch test?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(a)(iii)</td>
+                <td>Explain the process of Photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(a)(iv)</td>
+                <td>Give a balanced chemical equation to represent the process of photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(a)(v)</td>
+                <td><strong>Draw a neat, labelled diagram of an experimental setup to show that oxygen is released</strong> during photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(b)(ii)</td>
+                <td>State the main function of <strong>Cytokinins</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(a)(i)</td>
+                <td>Name the process being studied (Bell Jar setup). Define the process.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(a)(ii)</td>
+                <td>Why was the pot enclosed in a rubber sheet?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(a)(iii)</td>
+                <td>Mention two external factors which can accelerate the above process.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(a)(iv)</td>
+                <td>List two adaptations in plants to reduce the above process.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q5(a)(v)</td>
+                <td><strong>Draw a neat, labelled diagram of a stomatal apparatus</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(a)(i)</td>
+                <td>Name The process of transformation of several glucose molecules into one molecule of starch.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(b)(ii)</td>
+                <td>Explain the term <strong>Diffusion</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(b)(iii)</td>
+                <td>Explain the term <strong>Photolysis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(f)(i)</td>
+                <td>Choose the ODD one out: Auxin, Ethylene, Adrenaline, Cytokinin. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(g)(iv)</td>
+                <td>Match Stroma with Light independent reaction/Light dependent reaction.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(g)(v)</td>
+                <td>Match Stomata with diffusion of gases/chlorophyll.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(h)(i)</td>
+                <td>Name the <strong>tropic movement shown</strong> in the diagram (root/water).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(h)(ii)</td>
+                <td>Explain the tropic movement mentioned in (i).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(h)(iii)</td>
+                <td>Label the part marked 'A'.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(h)(iv)</td>
+                <td>What is part A attracted to?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(h)(v)</td>
+                <td>Give an example of a plant which shows <strong>Thigmotropism</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(a)(i)</td>
+                <td>Which factor is being studied here (Photosynthesis experiment)?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(a)(ii)</td>
+                <td>What is the purpose of keeping <strong>KOH in the flask</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(a)(iii)</td>
+                <td>Explain the term Photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(a)(iv)</td>
+                <td>What will you observe when the leaf A is tested for starch?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(a)(v)</td>
+                <td>Write a well balanced chemical equation for the process of photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q3(b)(i)</td>
+                <td>Biological reason: It is advisable to keep green plants in an aquarium.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(b)(i)</td>
+                <td>Differentiate between <strong>Transpiration and Guttation</strong> (place of occurrence).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(b)(iv)</td>
+                <td>Differentiate between <strong>Osmosis and Active Transport</strong> (Substances undergoing movement).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(a)(i)</td>
+                <td>Will the level of mercury in the glass tubing rise or fall (Potometer)? Which <strong>conducting tissue</strong> of the plant does the glass-tubing represent?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(a)(ii)</td>
+                <td>Define Transpiration.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(a)(iii)(1)</td>
+                <td>How will the rate of the above process differ if the environment of the plant has: Less humidity?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(a)(iii)(2)</td>
+                <td>How will the rate of the above process differ if the environment of the plant has: High temperature?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(a)(iv)</td>
+                <td>State any <strong>two advantages of transpiration</strong> to the plant.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(a)(v)</td>
+                <td><strong>Draw a neat labelled diagram of a Plasmolysed cell</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q6(a)(ii)</td>
+                <td>State two functions of <strong>Ethylene</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(iv)</td>
+                <td><strong>Deplasmolysis</strong> occurs when a plasmolysed cell is placed in: (b) <strong>Tap water</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(xi)</td>
+                <td>The site of <strong>light reaction</strong> in the cells of a green leaf is: (b) <strong>Grana of chloroplast</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(xii)</td>
+                <td>The paper used to demonstrate <strong>unequal transpiration</strong> in a dicot leaf is: (d) <strong>Cobalt chloride paper</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(i)(d)</td>
+                <td>Name The openings on the barks of trees through which transpiration occurs.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(i)(e)</td>
+                <td>Name A <strong>gaseous plant hormone</strong> which promotes ripening of fruits.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(ii)(b)</td>
+                <td>Arrange and rewrite the terms in each group in correct order: <strong>Xylem, Soil water, Cortical cells, Root hair</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(i)</td>
+                <td>Write the <strong>overall chemical equation for photosynthesis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(iv)</td>
+                <td>Excessive use of fertilizers in agricultural fields reduces the yield of crops. Justify the statement.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(v)(a)</td>
+                <td>Name the phenomenon depicted by the shoot in the diagram (bending towards light).</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(v)(b)</td>
+                <td>Which plant hormone plays an important role in the above movement?</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(v)(c)</td>
+                <td>Complete and rewrite: Shoots show positive _________ whereas, roots show positive __________.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q4(ii)</td>
+                <td>What is <strong>Active transport</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q6(i)</td>
+                <td>Define the term <strong>Transpiration</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q6(ii)</td>
+                <td>State any two adaptations in plants to reduce transpiration.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q7(v)(a)</td>
+                <td>Potted plant with variegated leaves... Which aspect of photosynthesis is being tested in the above diagram?</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q7(v)(b)</td>
+                <td>Why was the plant kept in dark for 24 hours?</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q7(v)(c)</td>
+                <td>After the starch test what will be the colour of the yellow and green parts of the leaf? Give reasons to support your answer.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(iii)</td>
+                <td>Leaves of certain plants roll up on a hot sunny day. Explain by giving suitable reasons.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(iv)</td>
+                <td>What is a semi permeable membrane? Name the semi permeable membrane present in a plant cell.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(ii)</td>
+                <td>The process of conversion of ADP to ATP during photosynthesis is called: (c) <strong>Photophosphorylation</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(iii)</td>
+                <td>The process in which water is lost from the margins of strawberry leaves is: (d) <strong>Guttation</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(v)</td>
+                <td>Which one of the following helps in the <strong>opening of stomata</strong>: (b) <strong>Potassium ions</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(i)(a)</td>
+                <td>Name Unicellular outgrowths from the epidermis of roots.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(i)(c)</td>
+                <td>Name The <strong>tropic movement of plant parts in response to chemicals</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(ii)(e)</td>
+                <td>Arrange and rewrite the terms in each group in the correct order: <strong>Water vapour, Soil water, Leaves, Ascent of Sap</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(iii)(a-e)</td>
+                <td>Study the diagram... and fill in the blanks regarding experiment proving <strong>carbon dioxide is necessary for photosynthesis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(i)</td>
+                <td>Expand the abbreviation-<strong>NADP</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(ii)</td>
+                <td>Mention two adaptations in roots for absorption of water from the soil.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(v)(a)</td>
+                <td>Name the phenomenon depicted by the shoot in the given figure.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(v)(b)</td>
+                <td>Define the above phenomenon (tropism).</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(v)(c)</td>
+                <td>Write the name of the part marked X.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q4(iii)</td>
+                <td>Mention two advantages of Transpiration.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q6(v)</td>
+                <td>Draw a neat, labelled diagram of a <strong>chloroplast</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q7(iv)</td>
+                <td>Write any two limitations of using a Ganong's Potometer to demonstrate the uptake of water.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(vi)</td>
+                <td>Assertion/Reason: A turgid plant cell is in a balanced state... In a turgid cell, turgor pressure and wall pressure are equal...</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(vii)</td>
+                <td>The <strong>optimum temperature for photosynthesis</strong> is: (d) 25 – 35oC.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(xiv)</td>
+                <td>Identify the correct pair matching Tropism and Stimulus: P: Thigmotropism/Touch, R: Chemotropism/Chemicals.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(i)(b)</td>
+                <td>Name A waxy layer on the upper epidermis of leaves meant to reduce Transpiration.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(iv)(e)</td>
+                <td>Name the structure: Regulation of the opening and closing of stomata.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q3(i)</td>
+                <td>Write the <strong>overall chemical equation for photosynthesis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q3(ii)(a)</td>
+                <td>Name the phytohormone that Ramesh sprays to improve the <strong>shape of the grapes</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q3(ii)(b)</td>
+                <td>What is the technical term for the formation of seedless grapes?</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q4(v)</td>
+                <td>Given below is a picture of a tree. Mention the scientific phenomena occurring in the parts labelled (a), (b) and (c).</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q5(v)</td>
+                <td><strong>Draw a neat, labelled diagram to show that oxygen is released</strong> during photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q6(i)</td>
+                <td>Where are <strong>Hydathodes located</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q6(v)</td>
+                <td>Copy the diagram (plasmolysed cortical cell) and label the following parts: Cytoplasm, Hypertonic solution, Plasma membrane.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Chapter 4: Human Anatomy & Physiology -->
+    <h3 id="chapter4">Chapter 4: Human Anatomy & Physiology</h3>
+
+    <h4>Sub-Chapter 4A: Circulation, Blood, and Immunity</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(b)(ii)</td>
+                <td><strong>Penicillin</strong> obtained from a fungus is: A. Antibiotic, B. Antiseptic, C. Antibody, D. Antiserum.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(d)(i)</td>
+                <td>Rewrite the terms in correct order in a logical sequence: <strong>Fibrin, Platelets, Thromboplastin, Fibrinogen, Thrombin</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(f)(iv)</td>
+                <td>Complete the second pair on a similar basis: Foetus : Amnion : : Heart : ____________.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(g)(v)</td>
+                <td>Match <strong>Diabetes mellitus</strong> with Hyperglycemia/Hypoglycemia.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(b)(iii)</td>
+                <td>Differentiate between <strong>Antibiotic and Antibody</strong> [Source].</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(b)(v)</td>
+                <td>Biological reason: The <strong>left ventricle of the heart has a thicker wall</strong> than the right ventricle.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(a)(i)</td>
+                <td>Which parts of heart are in the diastolic phase? Give a reason to support your answer.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(a)(ii)</td>
+                <td>Label the parts numbered 1 and 2 in the diagram (heart). What type of blood flows through them?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(a)(iii)</td>
+                <td>What causes the <strong>heart sounds 'LUBB' and 'DUP'</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(a)(iv)</td>
+                <td>Name the <strong>blood vessels that supply oxygenated blood to the heart muscles</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(a)(v)</td>
+                <td>Draw neat labelled diagrams of a cross section of an <strong>artery and a vein</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(i)</td>
+                <td>Give appropriate biological / technical terms for <strong>The type of immunity that exists in our body due to our genetic makeup</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(vii)</td>
+                <td>Give appropriate biological / technical terms for <strong>The mild chemical substance which when applied on the body kills germs</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(x)</td>
+                <td>Give appropriate biological / technical terms for <strong>Cellular components of blood containing haemoglobin</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(a)(i)</td>
+                <td>Name <strong>The organization which procures and supplies blood during an emergency</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(a)(ii)</td>
+                <td>The <strong>blood vessel which supplies blood to the liver</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(d)</td>
+                <td>Match Adrenal virilism with Hypersecretion of adrenal cortex/Hyposecretion of adrenal cortex.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(f)(v)</td>
+                <td>Choose between the two options: Blood in the pulmonary artery or pulmonary vein (Which one contains less oxyhaemoglobin?).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(vii)</td>
+                <td>Technical term for <strong>Squeezing out of white blood cells from the capillaries</strong> into the surrounding tissues.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(ix)</td>
+                <td>Technical term for <strong>The relaxation phase of the heart</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(a)(i)</td>
+                <td>Name the components numbered '1' to '4' (blood smear).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(a)(ii)</td>
+                <td>Mention two structural differences between the parts '1' (RBC) and '2' (WBC).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(a)(iii)</td>
+                <td>Name the <strong>soluble protein</strong> found in part '4' which forms insoluble threads during clotting of blood.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(a)(iv)</td>
+                <td>What is the <strong>average lifespan</strong> of the component numbered '1' (RBC)?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(a)(v)</td>
+                <td>Component numbered '1' do not have certain organelles but are very efficient in their function. Explain.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(a)(v)</td>
+                <td>Name The compound formed when haemoglobin combines with carbon dioxide in blood.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(d)(iii)</td>
+                <td>Match <strong>Acetylcholine</strong> with Neurotransmitter.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(e)(i)</td>
+                <td>While recording the pulse rate, where exactly does a doctor press on our wrist? (C. <strong>Artery</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(e)(iii)</td>
+                <td>A <strong>muscular wall is absent</strong> in: (A. Capillary).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(f)(i)</td>
+                <td>Choose the ODD one out: Addison's disease, Cushing's Syndrome, Acromegaly, <strong>Leukemia</strong>. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(b)(iv)</td>
+                <td>State the main function of the <strong>Coronary Artery</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(a)(iii)</td>
+                <td>Name The <strong>iron containing pigment in erythrocytes</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(c)(ii)</td>
+                <td>Complete the second pair on a similar basis: Brain : Meninges :: Heart : ___________.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(e)(ii)</td>
+                <td><strong>Agranulocytes</strong> are: (A. <strong>Lymphocytes, Monocytes</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(b)(i)</td>
+                <td>Name the blood vessels labelled 1 to 4 (circulation pathway).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(b)(ii)</td>
+                <td>Which blood vessel supplies oxygenated blood to the muscles of the heart?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(b)(iii)</td>
+                <td>What is the importance of blood vessel labelled 5?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(b)(iv)</td>
+                <td>What is the type of blood circulation that takes place between the <strong>heart and the lungs</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(b)(v)</td>
+                <td>Draw a diagram of the different blood cells as seen in a smear of human blood.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(b)(viii)</td>
+                <td>Give the technical term for Process by which <strong>leucocytes migrate through the walls of capillaries</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(iii)</td>
+                <td>The heart sound 'Dup' is produced when: (c) <strong>Semilunar valves close</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(vii)</td>
+                <td>The <strong>life span of an RBC</strong> is: (a) <strong>120 days</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(xiv)</td>
+                <td>Oxygenated blood to liver is supplied by: (a) <strong>Hepatic artery</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q3(ii)</td>
+                <td>Mention any <strong>two functions of blood</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(v)(a)</td>
+                <td>The diagram below depicts the human heart. Which part of the heart is in the contraction phase?</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(v)(b)</td>
+                <td>Give a suitable reason to justify your answer in (a).</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q8(v)(c)</td>
+                <td>Distinguish between Systole and Diastole.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(viii)</td>
+                <td>If a person has a heart attack, what must be done immediately? P, Q, R, S options.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(xi)</td>
+                <td>Osmosis takes place when there is: (c) <strong>A selectively permeable membrane</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(iv)(a)</td>
+                <td>Choose the odd one out: <strong>Prothrombin, Thrombin, Fibrinogen, Albumin</strong>. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(iv)(c)</td>
+                <td>Choose the odd one out: Neutrophils, Basophils, <strong>Monocytes</strong>, Eosinophils. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(iv)(a)</td>
+                <td>Give the exact location of <strong>Pericardium</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(iv)(b)</td>
+                <td>Give the exact location of <strong>Bicuspid valve</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q6(i)</td>
+                <td>Define the term-<strong>Diapedesis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q6(iii)</td>
+                <td>Carbon monoxide is dangerous when inhaled in excess. Comment on the statement.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q7(iii)</td>
+                <td>Mention two structural differences between an <strong>artery and a vein</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q8(ii)(a)</td>
+                <td>Name the mineral element required for <strong>Clotting of blood</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q8(iv)</td>
+                <td>Why are <strong>RBCs efficient in their functions</strong> though they lack nucleus and mitochondria?</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(ii)(a)</td>
+                <td>The heart is enclosed by a membrane called (a) ____________.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(ii)(b)</td>
+                <td>The ventricles give rise to two large blood vessels called (b) ____________ and (c) ____________.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(ii)(d)</td>
+                <td>The flaps of the cuspid valves are kept in position by (d) ____________.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(ii)(e)</td>
+                <td>(e) ____________ arteries supply oxygenated blood to the walls of the heart.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q4(ii)(a)</td>
+                <td>Name the white blood cells that <strong>show phagocytosis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q4(ii)(b)</td>
+                <td>Name the white blood cells that <strong>produce antibodies</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(v)(c)</td>
+                <td>Which part of the autonomic nervous system increases the secretion of Adrenaline?</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Sub-Chapter 4B: Excretory System</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(a)(ii)</td>
+                <td>Name <strong>The organ which produces urea</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(b)(iv)</td>
+                <td>Surgical method of sterilization in a woman involves cutting and tying of: D. <strong>Oviduct</strong>. (Often contrasted with Ureter/Urethra).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(e)(v)</td>
+                <td>Choose the ODD one out: Bile, Urea, Uric acid, Ammonia. Name the CATEGORY to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q2(b)(iv)</td>
+                <td>Differentiate between <strong>Renal cortex and Renal medulla</strong> [Parts of the nephrons present].</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(b)(iv)</td>
+                <td>Biological reason: <strong>There is frequent urination in winter than in summer</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(e)(i)</td>
+                <td>Correct the following statement: Normal pale yellow colour of the urine is due to the presence of the pigment <strong>Melanin</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(f)(i)</td>
+                <td>Choose between the two options: Blood in the renal artery or renal vein (Which one has more urea?).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(i)</td>
+                <td>Technical term for <strong>Process of maintaining water and salt balance in the blood</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(a)(i)</td>
+                <td>Name the structure represented in the diagram (Nephron part).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(a)(ii)</td>
+                <td>What is the liquid entering part '1' called? Name two substances present in this liquid that are reabsorbed in the tubule.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(a)(iii)</td>
+                <td>What is the fluid that comes to part '2' called? Name the main nitrogenous waste in it.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(a)(iv)</td>
+                <td>Mention the <strong>three main steps involved in the formation of the fluid</strong> mentioned in (iii) above.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(a)(v)</td>
+                <td>Name the substance which may be present in the fluid in part '2' if a person suffers from Diabetes mellitus.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(b)(iv)</td>
+                <td>Differentiate between <strong>Ureter and Urethra</strong> [function].</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(b)(iv)</td>
+                <td>Correct and rewrite the statement: The kidney is composed of number of <strong>neurons</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q4(a)(i)</td>
+                <td>Identify the system (Urinary system).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q4(a)(ii)</td>
+                <td>Label the parts marked 2 and 4 (Urinary system). Mention the function of part 5.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q4(a)(iii)</td>
+                <td>Name the structural and functional units of the part marked 1 (Kidney).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q4(a)(iv)</td>
+                <td>What is the fluid that accumulates in part 3? Which is the <strong>main nitrogenous waste</strong> present in it?</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q4(a)(v)</td>
+                <td>Draw a neat, labelled diagram showing the longitudinal section of part 1 (Kidney).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(a)(iv)</td>
+                <td>Name The duct which transports urine from the kidney to the urinary bladder.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(e)(iv)</td>
+                <td>The structural and functional units of excretion in the human kidney is the: (D. <strong>Nephron</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(a)(i)</td>
+                <td>In which region of the kidney is the above structure present (Nephron)?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(a)(ii)</td>
+                <td>Label the parts numbered 1 to 4 (Nephron).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(a)(iii)</td>
+                <td>What is the <strong>technical term for the process that occurs in part 3</strong> (Bowman's capsule)?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(a)(iv)</td>
+                <td>Why is fluid X (Glomerular filtrate) <strong>not called urine</strong>? Justify your answer.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(a)(v)</td>
+                <td>Draw a neat, labelled diagram of the urinary system of man.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(ix)</td>
+                <td>The pale yellow colour of normal human urine is due to the pigment: (c) <strong>Urochrome</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(iv)(c)</td>
+                <td>Choose the odd one out: Uterus, <strong>Urethra</strong>, Urinary bladder, Ureter. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q6(v)</td>
+                <td><strong>Draw a neat, labelled diagram of a Malpighian Capsule</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q7(ii)</td>
+                <td>Renal cortex has a dotted appearance and Renal medulla has a striped appearance. Explain.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(iv)</td>
+                <td>The hormone that <strong>affects urination</strong> is: (b) <strong>Vasopressin</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(i)(d)</td>
+                <td>Name The <strong>main nitrogenous waste</strong> formed in the body.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(ii)(d)</td>
+                <td>Arrange and rewrite the terms in each group in the correct order: <strong>Loop of Henle, Distal convoluted tubule, Bowman's Capsule, Proximal convoluted tubule</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(iii)</td>
+                <td>Differentiate between <strong>Afferent arteriole and Efferent arteriole</strong> (diameter).</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q8(i)</td>
+                <td>Define the term <strong>ultrafiltration</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q5(i)</td>
+                <td>What is <strong>Micturition</strong>? Explain.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q8(i)</td>
+                <td>Explain the term <strong>Excretion</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Chapter 5: Reproductive System & Human Development -->
+    <h3 id="chapter5">Chapter 5: Reproductive System & Human Development</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(b)(iv)</td>
+                <td>Surgical method of sterilization in a woman involves cutting and tying of: D. <strong>Oviduct</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(a)(i)</td>
+                <td>Label the parts numbered 1 to 3 in the diagram (LS of testis).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(a)(ii)</td>
+                <td>In which part of the testis are the <strong>sperms produced</strong>?</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(a)(iii)</td>
+                <td>State the functions of the parts labelled 1 and 3 (testis diagram).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(a)(iv)</td>
+                <td>Name the cells that secrete <strong>Testosterone</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(a)(v)</td>
+                <td><strong>Draw a neat, labelled diagram of a sperm</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(iii)</td>
+                <td>Give appropriate biological / technical terms for <strong>The accessory gland in human males whose secretion activates the sperms</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q6(b)(v)</td>
+                <td>Give appropriate biological / technical terms for <strong>The kind of twins formed from two fertilised eggs</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q2(b)(i)</td>
+                <td>Mention the exact location of <strong>Epididymis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(a)(i)</td>
+                <td>Arrange the letters given below each diagram in a logical sequence to show the correct order in the process of <strong>fertilisation of an egg</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(a)(ii)</td>
+                <td>Where does <strong>fertilisation normally take place</strong>? What is <strong>'Implantation'</strong> that follows fertilisation?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(a)(iii)</td>
+                <td>Mention the chromosome number of the egg and zygote in humans.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(a)(iv)</td>
+                <td>Explain the term <strong>'Gestation'</strong>. How long does Gestation last in humans?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q3(a)(v)</td>
+                <td><strong>Draw a neat, labelled diagram of a mature human sperm</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(vi)</td>
+                <td>Technical term for <strong>The onset of menstruation in a young girl</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(viii)</td>
+                <td>Technical term for <strong>The fluid which surrounds the foetus</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q5(b)(iii)</td>
+                <td>Differentiate between <strong>Testosterone and Oestrogen</strong> [organ which secretes].</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(b)(ii)</td>
+                <td>Biological explanation: The <strong>placenta is an important structure</strong> for the development of a foetus.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(a)(iii)</td>
+                <td>The structure which <strong>connects the placenta and the foetus</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(b)(ii)</td>
+                <td>Correct and rewrite the statement: The protective sac which develops around the developing embryo is called the <strong>Pericardium</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(d)(ii)</td>
+                <td>Match <strong>Leydig cells</strong> with Testosterone.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(e)(ii)</td>
+                <td>In a human male, a sperm will contain: (D. <strong>Either X or Y chromosome</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(e)(iv)</td>
+                <td>On which day of the <strong>menstrual cycle does ovulation</strong> take place? (C. <strong>14th day</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q2(b)(iv)</td>
+                <td>Mention the exact location of <strong>Amniotic fluid</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q3(b)(v)</td>
+                <td>State the main function of <strong>Seminal Vesicles</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q7(b)(iv)</td>
+                <td>Mention the number and the name of the part involved in <strong>fertilization and implantation</strong> from the diagram (female reproductive system).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q7(b)(v)(1)</td>
+                <td>Mention the surgical methods of contraception in: Human males.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q7(b)(v)(2)</td>
+                <td>Mention the surgical methods of contraception in: Human females.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(c)(v)</td>
+                <td>Complete the second pair on a similar basis: Uterus : Implantation :: Fallopian tube : __________.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(e)(i)</td>
+                <td>The fusion of the sperm and ovum is termed as: (C. Fertilization).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(e)(v)</td>
+                <td>In a human female, <strong>ovum consists of</strong>: (D. <strong>22 autosomes and 1 X-chromosome</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(f)(v)</td>
+                <td>Choose the ODD one out: Prostate gland, Cowper's gland, seminal vesicle, <strong>seminiferous tubules</strong>. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(b)(iv)</td>
+                <td>Give the technical term for <strong>The accessory gland in human males whose secretion neutralises the acid in the vagina</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q5(b)(vii)</td>
+                <td>Give the technical term for <strong>A surgical method of fertility control in human males</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q6(a)(iv)</td>
+                <td>State two functions of <strong>Testis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(b)(i)</td>
+                <td>Label the parts numbered 1 to 3 in the diagram (developing human foetus).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(b)(ii)</td>
+                <td>Mention any <strong>two functions of the part labelled 2 (Placenta)</strong> in the diagram.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(b)(iii)</td>
+                <td>Explain the significance of the part numbered 3 (Umbilical cord) in the diagram.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(b)(iv)</td>
+                <td>Define the term <strong>'Gestation'</strong>. What is the normal gestational period of the developing embryo?</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q7(b)(v)</td>
+                <td>Mention the sex chromosomes in a male and female embryo.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(i)</td>
+                <td>The <strong>sex chromosome in a human ovum</strong> is: (a) X chromosome.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(i)(c)</td>
+                <td>Name The permanent stoppage of menstruation in human females around the age of 45 years. (<strong>Menopause</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(ii)(e)</td>
+                <td>Arrange and rewrite the terms in each group in correct order: <strong>Testis, Urethra, Sperm duct, Epididymis</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(v)(c)</td>
+                <td>State the exact location of <strong>Amniotic fluid</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q4(v)</td>
+                <td><strong>Draw a neat, labelled diagram of a human sperm</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q6(iii)</td>
+                <td>Mention any <strong>two functions of the human foetal placenta</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q6(iv)</td>
+                <td>What is the significance of the human testes being located in scrotal sacs outside the abdomen?</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(vi)</td>
+                <td>A zygote which has Y chromosome inherited from the father will develop into a: (d) Boy.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(i)(e)</td>
+                <td>Name The process of <strong>attachment of fertilized ovum to the wall of uterus</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q4(i)</td>
+                <td>Give the biological term for the <strong>surgical method of contraception in human females</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q6(iv)(a)</td>
+                <td>Name the process for the release of the part labelled 1 (from ovary diagram).</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q6(iv)(b)</td>
+                <td>Write the name of the structure marked 2 (from ovary diagram).</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(iii)</td>
+                <td>Assertion/Reason: <strong>Seminal vesicles pour an alkaline secretion</strong> into the semen... Reason: The female vagina is acidic...</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(i)(a)</td>
+                <td>Name The fully developed part of the ovary containing a mature ovum.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(iii)(e)</td>
+                <td>Arrange the terms in correct order: <strong>Sperm duct, Seminiferous tubule, Epididymis, Efferent ducts</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q2(iv)(a)</td>
+                <td>Name the structure: The canal through which the testes descend down into the scrotum...</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q5(iii)</td>
+                <td>Differentiate between the functions of <strong>Urethra and Uterus</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(iii)</td>
+                <td>Mention any <strong>two functions of amniotic fluid</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Chapter 6: Population, Pollution, & Ecology -->
+    <h3 id="chapter6">Chapter 6: Population, Pollution, & Ecology</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Q No.</th>
+                <th>Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(a)(v)</td>
+                <td>Name The <strong>international health organisation which educates people in accident prevention</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(b)(i)</td>
+                <td>The prime source of <strong>chlorofluorocarbons</strong> is: D. Refrigeration equipments.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(d)(v)</td>
+                <td>Rewrite the terms in correct order in a logical sequence: <strong>Caterpillar, Snake, Owl, Frog, Green leaves</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(e)(ii)</td>
+                <td>Choose the ODD one out: Formalin, Iodine, DDT, Lime. Name the CATEGORY to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(g)(ii)</td>
+                <td>Match <strong>Birth rate</strong> with Natality.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q1(g)(iv)</td>
+                <td>Match <strong>Euro norms</strong> with vehicular standards.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(b)(i)</td>
+                <td>Name the kind of pollution (Water pollution diagram).</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(b)(ii)</td>
+                <td>List any three common sources of this pollution.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(b)(iii)</td>
+                <td>Mention three harmful effects of this pollution on human health.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(b)(iv)</td>
+                <td>Explain the term <strong>'Pollutant'</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q3(b)(v)</td>
+                <td>Name two soil pollutants.</td>
+            </tr>
+            <tr>
+                <td data-year="2017">2017</td>
+                <td>Q5(b)(ii)</td>
+                <td>Biological reason: <strong>Cutting of trees should be discouraged</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(b)(ii)</td>
+                <td>Which one of the following is <strong>non-biodegradable</strong>? (A. <strong>DDT</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(b)(v)</td>
+                <td>Which one of the following is a <strong>Greenhouse gas</strong>? (B. <strong>Methane</strong>).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(g)(i)</td>
+                <td>Name the type of pollution shown in the picture (Noise Pollution).</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(g)(ii)</td>
+                <td>Name one source of this pollution.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(g)(iii)</td>
+                <td>How does this pollution affect human health?</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(g)(iv)</td>
+                <td>Write one measure to reduce this pollution.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(g)(v)</td>
+                <td>State one gaseous compound that leads to the <strong>depletion of the ozone layer</strong> and creates 'Ozone holes'.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q1(h)(i)</td>
+                <td>Choose the ODD one out: Detergents, X-rays, sewage, oil spills. Name the CATEGORY to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q2(b)(ii)</td>
+                <td>Differentiate between <strong>Demography and Population density</strong> [Definition].</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q4(b)(x)</td>
+                <td>Technical term for <strong>The difference between the birth rate and the death rate</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(b)(i)</td>
+                <td>Biological explanation: <strong>Education is very important for population control</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2018">2018</td>
+                <td>Q6(b)(iii)</td>
+                <td>Biological explanation: All the food chains begin with green plants.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(c)(i)</td>
+                <td>Biological reason: The <strong>birth rate in India is very high</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(c)(iv)</td>
+                <td>Biological reason: <strong>Acid rain is harmful</strong> to the environment.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(c)(v)</td>
+                <td>Biological reason: All life on Earth is supported by Photosynthesis.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(f)(v)</td>
+                <td>Choose the ODD one out: Polythene bag, <strong>Crop residue</strong>, Animal waste, Decaying vegetable. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(h)(i)</td>
+                <td>Identify the type of pollution (Noise pollution picture).</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(h)(ii)</td>
+                <td>Name one pollutant that causes the above pollution.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(h)(iii)</td>
+                <td>Mention the impact of this pollution on human health.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(h)(iv)</td>
+                <td>State one measure to control this pollution.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q1(h)(v)</td>
+                <td>What is a <strong>'Pollutant'</strong>? Explain the term.</td>
+            </tr>
+            <tr>
+                <td data-year="2019">2019</td>
+                <td>Q7(a)(v)</td>
+                <td>Mention any <strong>two objectives of 'Swachh Bharat Abhiyan'</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q1(b)(v)</td>
+                <td>Explain the term <strong>Population density</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q2(b)(iv)</td>
+                <td>Differentiate between <strong>Biodegradable waste and Non-biodegradable waste</strong> (One example).</td>
+            </tr>
+            <tr>
+                <td data-year="2020">2020</td>
+                <td>Q4(b)(iii)</td>
+                <td>Differentiate between <strong>Population control and Swachh Bharat Abhiyan</strong> (One objective).</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(ii)</td>
+                <td>Which one of the following is a <strong>biodegradable waste</strong>? (d) Flowers.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q1(viii)</td>
+                <td>The statistical study of human population is called: (b) <strong>Demography</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(i)(b)</td>
+                <td>Name A genetic disorder in which the blood does not clot.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(ii)(a)</td>
+                <td>Arrange and rewrite the terms in each group in correct order: <strong>Snake, Rabbit, Cabbage, Hawk</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(iv)(a)</td>
+                <td>Choose the odd one out: <strong>Used bandages, Pesticides, Face masks, Syringes</strong>. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q2(iv)(b)</td>
+                <td>Choose the odd one out: Dust, Smoke, Carbon monoxide, <strong>Effluents</strong>. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(i)</td>
+                <td>Explain the term <strong>'Population density'</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(ii)</td>
+                <td>Name the two surgical methods of population control.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(iii)</td>
+                <td>Mention <strong>two factors responsible for population explosion</strong> in India.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(iv)</td>
+                <td>Name any two resources which come under pressure due to rising population.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(v)(a)</td>
+                <td>Name the climatic phenomenon for the <strong>increase in Earth's temperature</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(v)(b)</td>
+                <td>Mention one reason for this warming.</td>
+            </tr>
+            <tr>
+                <td data-year="2023">2023</td>
+                <td>Q5(v)(c)</td>
+                <td>What measure can be taken to prevent this climate change?</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q1(xiv)</td>
+                <td><strong>Birth rate</strong> is the number of live births per thousand persons in: (a) 1 year.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q2(iv)(d)</td>
+                <td>Choose the odd one out: Leaves, Styrofoam, Grass, Cow Dung. Name the category to which the others belong.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q3(iv)</td>
+                <td>Give <strong>two examples of water pollutants</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q4(ii)</td>
+                <td>State <strong>two harmful effects of acid rain</strong> on the environment.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q4(iv)</td>
+                <td>Write any two objectives of <strong>Swachh Bharat Abhiyan</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q5(iii)</td>
+                <td>"Birth rate in India is very high." Mention <strong>two reasons</strong> in support of the statement.</td>
+            </tr>
+            <tr>
+                <td data-year="2024">2024</td>
+                <td>Q8(iii)</td>
+                <td>Mention two harmful effects of <strong>noise pollution</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(i)</td>
+                <td>The number of live births per thousand people per year is called: (d) <strong>Natality</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q1(xii)</td>
+                <td>Identify the kind of pollution caused by nuclear power plants releasing warm water back into the stream. (d) <strong>Thermal pollution</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q3(iv)</td>
+                <td>State any two disadvantages of living close to an airport.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q4(iv)</td>
+                <td>State any two harmful effects of <strong>acid rain</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q5(ii)</td>
+                <td>What are <strong>biomedical wastes</strong>? Give an example.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(ii)(a)</td>
+                <td>Mention any one reason for <strong>reduction in the death rate</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(ii)(b)</td>
+                <td>Name any one resource that is under pressure due to population explosion.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(iv)(a)</td>
+                <td>Expand the abbreviation: <strong>CFC</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q7(iv)(b)</td>
+                <td>Expand the abbreviation: <strong>CNG</strong>.</td>
+            </tr>
+            <tr>
+                <td data-year="2025">2025</td>
+                <td>Q8(iii)</td>
+                <td>Mention any two objectives of <strong>Swachh Bharat Abhiyan</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <p>Comprehensive PYQ Compilation (2017-2025) | Organized by Sriyans Raj</p>
+    </div>
+
+    <script>
+        // Year filter functionality
+        document.querySelectorAll('.year-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.year-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const selectedYear = this.getAttribute('data-year');
+                filterQuestions(selectedYear);
+            });
+        });
+        
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', function() {
+            filterQuestions(document.querySelector('.year-btn.active').getAttribute('data-year'));
+        });
+        
+        function filterQuestions(year) {
+            const searchTerm = searchBox.value.toLowerCase();
+            const tables = document.querySelectorAll('table');
+            
+            tables.forEach(table => {
+                let hasVisibleRows = false;
+                const rows = table.querySelectorAll('tbody tr');
+                
+                rows.forEach(row => {
+                    const yearCell = row.querySelector('td:first-child');
+                    const questionCell = row.querySelector('td:last-child');
+                    const rowYear = yearCell.getAttribute('data-year');
+                    const questionText = questionCell.textContent.toLowerCase();
+                    
+                    // Check if row matches both year and search filters
+                    const yearMatch = year === 'all' || rowYear === year;
+                    const searchMatch = searchTerm === '' || questionText.includes(searchTerm);
+                    
+                    if (yearMatch && searchMatch) {
+                        row.style.display = '';
+                        hasVisibleRows = true;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+                
+                // Show or hide table based on visible rows
+                const tableContainer = table.closest('table');
+                const chapterHeader = table.previousElementSibling;
+                
+                if (!hasVisibleRows) {
+                    tableContainer.style.display = 'none';
+                    if (chapterHeader && chapterHeader.tagName === 'H3') {
+                        chapterHeader.style.display = 'none';
+                    }
+                } else {
+                    tableContainer.style.display = '';
+                    if (chapterHeader && chapterHeader.tagName === 'H3') {
+                        chapterHeader.style.display = '';
+                    }
+                }
+            });
+        }
+        
+        // Initialize with all questions visible
+        filterQuestions('all');
+    </script>
+</body>
+</html>
